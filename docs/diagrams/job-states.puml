@@ -1,0 +1,43 @@
+@startuml
+
+[*] --> Draft
+
+Draft --> Ready
+
+Ready --> Assigned
+
+Ready --> Discarded
+
+Assigned --> ImplementationInProgress
+
+ImplementationInProgress --> VerificationInProgress
+
+ImplementationInProgress --> Discarded
+
+Discarded --> Draft
+
+ImplementationInProgress --> PendingClarification
+
+PendingClarification --> ImplementationInProgress
+PendingClarification --> Discarded
+
+VerificationInProgress --> VerifierApproved
+VerificationInProgress --> Discarded
+VerificationInProgress --> PendingResolution
+
+PendingResolution --> VerificationInProgress
+
+VerifierApproved --> Approved
+
+Approved --> Dispute
+
+Dispute --> Discarded
+
+Dispute --> Approved
+
+Approved --> [*]
+
+Discarded --> [*]
+
+
+@enduml
